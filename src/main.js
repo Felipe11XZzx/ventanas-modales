@@ -40,6 +40,27 @@ const openModal = function () {
 };
 
 // Definimos la funcion openModal a cada uno de los botones
-btnsOpenModal.forEach(btn => {
+btnsOpenModal.forEach((btn) => {
   btn.addEventListener("click", openModal);
 });
+
+btnCloseModal.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+// Definimos un listener para que cuando se presione la tecla ESC se cierre el modal
+/*
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+    closeModal();
+  }
+});*/
+
+//ESTA SERIA OTRA MANERA DE REALIZAR LA FUNCIONALIDAD MAS ORIENTADA A REACT.
+const handleKeyDown = function (e) {
+  console.log(e, e.key);
+  if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+    closeModal();
+  }
+};
+
+document.addEventListener("keydown", handleKeyDown);
